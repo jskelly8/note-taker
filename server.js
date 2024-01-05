@@ -1,8 +1,24 @@
 const express = require('express');
-const path = require('path');
+// const path = require('path');
+const apiRoute = require('./routes/api.js');
+const htmlRoute = require('./routes/html.js');
 const app = express();
-const PORT = process.env.PORT || 3001; // You can choose a different port
+const PORT = process.env.PORT || 3001; 
 
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(apiRoute);
+app.use(htmlRoute);
+
+// Start the server and listen on the specified port
+app.listen(PORT, () => {
+  console.log(`Server is running on local host port ${PORT}`);
+});
+
+// -------------------------------
 // Serve static files from a public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -23,7 +39,3 @@ app.get('/path/:variable', (req, res) => {
   res.send(`Variable value: ${variable}`);
 });
 
-// Start the server and listen on the specified port
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
