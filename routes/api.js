@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 
 // GET request to endpoint /api/notes -- GETS saved notes and joins it to dbJSON
 apiRoute.get('/api/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '/db/db.json'));
+    res.sendFile(path.join(__dirname, '../db/db.json'));
 });
 
 // POST request to endpoint /api/notes -- POSTS/adds new notes to dbJSON
