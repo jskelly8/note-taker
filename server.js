@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const apiRoute = require('./routes/api.js');
-const htmlRoute = require('./routes/html.js');
+const notesRoute = require('./routes/notes.js');
+const mainRoute = require('./routes/main.js');
 const app = express();
 const PORT = process.env.PORT || 3001; 
 
@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(apiRoute);
-app.use(htmlRoute);
+app.use(notesRoute);
+app.use(mainRoute);
 
 // Starts the server and listen on the specified port
 app.listen(PORT, () => {

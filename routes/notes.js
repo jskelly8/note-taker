@@ -1,15 +1,15 @@
-const apiRoute = require('express').Router();
+const notesRoute = require('express').Router();
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid'); 
 
 // GET request to endpoint /api/notes -- GETS saved notes and joins it to dbJSON
-apiRoute.get('/api/notes', (req, res) => {
+notesRoute.get('/api/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '../db/db.json'));
 });
 
 // POST request to endpoint /api/notes -- POSTS/adds new notes to dbJSON
-apiRoute.post('/api/notes', (req, res) => {
+notesRoute.post('/api/notes', (req, res) => {
     let noteList = JSON.parse(fs.readFileSync('./db/db.json'));
     let newNote = req.body;
 
@@ -20,7 +20,7 @@ apiRoute.post('/api/notes', (req, res) => {
 });
 
 // DELETE request to endpoint /api/notes -- DELETES a note
-apiRoute.delete('/api/notes/:id', (req, res) => {
+notesRoute.delete('/api/notes/:id', (req, res) => {
     let noteList = JSON.parse(fs.readFileSync('./db/db.json'));
     const noteId = req.params.id;
 
@@ -41,5 +41,6 @@ apiRoute.delete('/api/notes/:id', (req, res) => {
     }
 })
 
-// -------------------------------------
-module.exports = apiRoute;
+
+
+module.exports = notesRoute;
