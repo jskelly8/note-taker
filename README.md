@@ -20,7 +20,7 @@
   * Please be sure to use 'npm i' command in order to download the necessary dependencies to run the code if testing, listed inside the package.json
 
   ## Usage
-  -- link 
+  Link to deployed application: [Note Taker](https://jess-note-taker-5e8a79bae927.herokuapp.com/)
   
   Screenshot of completed site:
   ![Screenshot of Note Taker site with list of notes](./public/assets/images/noteTakerClip.png)
